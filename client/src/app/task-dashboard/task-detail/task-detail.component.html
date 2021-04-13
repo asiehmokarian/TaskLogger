@@ -1,0 +1,27 @@
+<div *ngIf="task">
+  <h2>{{task.title | uppercase}} Details</h2>
+  <div>
+    <label for="title">Title: </label>
+    <input id="title" name="title" [(ngModel)]="task.title" placeholder="Title">
+  </div>
+  <div>
+    <label for="description">Description: </label>
+    <input id="description" name="description" [(ngModel)]="task.description" placeholder="Description">
+  </div>
+  <div>
+    <label for="categoryId">Category: </label>
+    <select id="categoryId" name="categoryId" [(ngModel)]="task.categoryId">
+      <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+    </select>
+  </div>
+  <div>
+    <label for="deadline">Deadline: </label>
+    <input id="deadline" type="datetime-local" name="deadline" [ngModel]="task.deadline| date:'yyyy-MM-ddTHH:mm'" (ngModelChange)="task.deadline = $event">
+  </div>
+  <div>
+    <label for="reminder">Reminder: </label>
+    <input id="reminder" type="datetime-local" name="reminder" [ngModel]="task.reminder | date:'yyyy-MM-ddTHH:mm'" (ngModelChange)="task.reminder = $event">
+  </div>
+</div>
+<button (click)="save()">Save</button>
+<button (click)="goBack()">go back</button>

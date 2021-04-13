@@ -1,0 +1,22 @@
+<button routerLink="/tasks/add" class="add-button">Add task</button>
+<ul class="tasks">
+  <li *ngFor="let task of tasks, let i = index">
+    <a routerLink="/tasks/{{task.id}}">
+      <span class="badge">{{task.id}}</span>
+      <span>{{task.title}}</span>
+    </a>
+  </li>
+</ul>
+
+<div *ngIf="upcomingTasks.length">
+  <h2>Upcoming tasks</h2>
+  <ul class="tasks">
+    <li *ngFor="let task of upcomingTasks">
+      <a routerLink="/tasks/{{task.id}}">
+        <span class="badge">{{task.id}}</span>
+        <span>{{task.title}}</span>|
+        <span>{{task.deadline | date: 'short'}}</span>
+      </a>
+    </li>
+  </ul>
+</div>
