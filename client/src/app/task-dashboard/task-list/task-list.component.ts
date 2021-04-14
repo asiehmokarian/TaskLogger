@@ -14,7 +14,7 @@ export class TaskListComponent implements OnInit {
   categoryId?: number | null = null;
   upcomingTasks: Task[] = [];
 
-  constructor(private taskService: TasksService, private route: ActivatedRoute) {
+  constructor(private tasksService: TasksService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -25,12 +25,12 @@ export class TaskListComponent implements OnInit {
     const categoryId = this.route.snapshot.paramMap.get('id');
     if (categoryId) {
       this.categoryId = +categoryId;
-      this.taskService.getTaskByCategory(+categoryId).subscribe(tasks => { this.tasks = tasks });
+      this.tasksService.getTaskByCategory(+categoryId).subscribe(tasks => { this.tasks = tasks });
     }
     else {
-      this.taskService.getTasks().subscribe(tasks => { this.tasks = tasks });
+      this.tasksService.getTasks().subscribe(tasks => { this.tasks = tasks });
     }
 
-    this.taskService.getUpComingTasks().subscribe(tasks => this.upcomingTasks = tasks);
+    this.tasksService.getUpComingTasks().subscribe(tasks => this.upcomingTasks = tasks);
   }
 }

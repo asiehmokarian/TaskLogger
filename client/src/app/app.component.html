@@ -4,4 +4,7 @@
 </nav>
 <router-outlet></router-outlet>
 <app-notifications></app-notifications>
+<div *ngIf="upcomingTasks.length" style="width:300px;height:100px;align-content:center">
+  <app-chart [source]="data"></app-chart>
+</div>
 
