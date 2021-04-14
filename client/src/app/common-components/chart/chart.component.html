@@ -1,0 +1,24 @@
+<ngx-charts-pie-chart [scheme]="colorScheme"
+                      [results]="source"
+                      [gradient]="gradient"
+                      [legend]="showLegend"
+                      [legendTitle]="legendTitle"
+                      [legendPosition]="legendPosition"
+                      [labels]="showLabels"
+                      [doughnut]="isDoughnut">
+  <ng-template #tooltipTemplate let-model="model">
+    <span class="tooltip-label">{{model.label}}:</span>
+    <span class="tooltip-val">{{model.value}} tasks</span>
+  </ng-template>
+</ngx-charts-pie-chart>
+
+<!--<ngx-charts-bar-vertical [scheme]="colorScheme"
+                         [results]="source"
+                         [xAxis]="showXAxis"
+                         [yAxis]="showYAxis"
+                         [showXAxisLabel]="showXAxisLabel"
+                         [showYAxisLabel]="showYAxisLabel"
+                         [xAxisLabel]="xAxisLabel"
+                         [yAxisLabel]="yAxisLabel"
+                         (select)="onSelect($event)">
+</ngx-charts-bar-vertical>-->

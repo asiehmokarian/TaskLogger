@@ -24,9 +24,22 @@
         {{category.id}}| {{category.name}}
         </a>
 
-queryParamMap vs queryParam (stoped to render the view)
- 
+queryParamMap vs queryParam (stoped to render the view)/ revisit category binding and tasks view reuse for 2 routes
+assumption on having the api logic at server side (no pagination, no query or search) 
+decide whether to have tasks under category object and add tasks to it or not
+  which will case having separate service for the category
 
+decide on the peroject sturucture to have a task dashboard component which host categories and tasks
+
+rename tasksService to taskservcice
+
+assumption:  categories are fixed and will not change
+
+pie chart or bar chart
+
+validate the right way if setting the chart data and pipeing some observables
+
+format the pie text to include tasks term
 
 # To read
 - Ngmodule scope
@@ -37,9 +50,28 @@ queryParamMap vs queryParam (stoped to render the view)
   - https://angular.io/guide/module-types
   - https://angular.io/guide/providers
   - Routing
+  - Form (assigning name attribute affect in binding the values) : no impact the missing date binding was due to date format
+  - directive property bindig syntax {{}} vs '' vs []
+  - read more on form model bindingdifferent inut types (select)
 
 # Notes
+
 - In Angular, the best practice is to load and configure the router in a separate, top-level module that is dedicated to routing and imported by the root AppModule.
 
   
+
+# PBIs
+
+- ✔creating the service to get tasks with close due date
+- ✔create the chart of tasks with close due date
+- create the table of tasks (1 day)
+- Style the layout 
+- Style the form 
+- Add form validation (1 day)
+- Add testing (1 day)
+- Create the notification service and view
+- Automate the delpoy and run
+- write the ADR 
+- Add wildcard route (2 hours)
+- 
   
