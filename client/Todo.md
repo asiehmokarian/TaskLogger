@@ -41,6 +41,40 @@ validate the right way if setting the chart data and pipeing some observables
 
 format the pie text to include tasks term
 
+UX vs UI
+@media query css
+
+table improvement (paging)
+
+hard codeded text for links
+
+active link
+
+difference between puting the style indside component style or in style file
+
+adding icons the buttons and links
+sortable table
+table hardcoded text
+
+project structure in a way not to have chart on add task page
+remove the additional line top of the table
+sort table by column
+
+undrestand component communication better in terms of change detection and lifecycle hooks 
+view child, setter and getter
+ngb nav feature
+
+duplicated code for getting category name and category compoennt
+
+study about stric type checking enable, disable
+
+rgument of type 'number | undefined' is not assignable to parameter of type 'number'.
+what to do with having ids as optional ?
+   ` <td>
+      {{task.categoryId! | categoryName}}
+    `</td>
+
+form model binding syntax (select input) [value]=[category.id] vs [value]="category.id" vs [value]={{category.id}} [ngValue] vs [value]
 # To read
 - Ngmodule scope
   - https://medium.com/@cyrilletuzi/understanding-angular-modules-ngmodule-and-their-scopes-81e4ed6f7407
@@ -53,6 +87,8 @@ format the pie text to include tasks term
   - Form (assigning name attribute affect in binding the values) : no impact the missing date binding was due to date format
   - directive property bindig syntax {{}} vs '' vs []
   - read more on form model bindingdifferent inut types (select)
+  - mb-2 mb-md-0 bootstrap meaing
+  - check upcomping tasks functionality after adding tasks.
 
 # Notes
 
@@ -64,9 +100,9 @@ format the pie text to include tasks term
 
 - ✔creating the service to get tasks with close due date
 - ✔create the chart of tasks with close due date
-- create the table of tasks (1 day)
-- Style the layout 
-- Style the form 
+- ✔create the table of tasks (1 day)
+- ✔Style the layout 
+- ✔Style the form 
 - Add form validation (1 day)
 - Add testing (1 day)
 - Create the notification service and view

@@ -6,12 +6,14 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { CategoryNamePipe } from './category-name.pipe';
 
 @NgModule({
   declarations: [
     TaskListComponent,
     TaskDetailComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    CategoryNamePipe
   ],
   imports: [
     CommonModule,

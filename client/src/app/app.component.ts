@@ -10,6 +10,7 @@ import { TasksService } from './services/tasks.service';
 })
 export class AppComponent {
   title = 'client';
+  sidebarMenuCollapsed = true;
   categories: Category[] = [];
   upcomingTasks: Task[] = [];
   data: any[] = [];
