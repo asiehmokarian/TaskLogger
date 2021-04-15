@@ -12,7 +12,7 @@ import { Category } from '../../models/category.model';
   styleUrls: ['./task-detail.component.scss']
 })
 export class TaskDetailComponent implements OnInit {
-  task?: Task = {};
+  task?: Task;
   id: string | null = null;
   categories: Category[] = [];
 
@@ -42,6 +42,8 @@ export class TaskDetailComponent implements OnInit {
       this.tasksService.getTask(+this.id)
         .subscribe(task => this.task = task);
     }
+    else
+      this.task = {};
   }
 
   save(): void {

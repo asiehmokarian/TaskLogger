@@ -1,22 +1,37 @@
-<button routerLink="/tasks/add" class="add-button">Add task</button>
-<ul class="tasks">
-  <li *ngFor="let task of tasks, let i = index">
-    <a routerLink="/tasks/{{task.id}}">
-      <span class="badge">{{task.id}}</span>
-      <span>{{task.title}}</span>
-    </a>
-  </li>
-</ul>
-
-<div *ngIf="upcomingTasks.length">
-  <h2>Upcoming tasks</h2>
-  <ul class="tasks">
-    <li *ngFor="let task of upcomingTasks">
-      <a routerLink="/tasks/{{task.id}}">
-        <span class="badge">{{task.id}}</span>
-        <span>{{task.title}}</span>|
-        <span>{{task.deadline | date: 'short'}}</span>
-      </a>
-    </li>
-  </ul>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h2 class="h2">Task List <small class="text-muted">({{categoryId === null ? 'All categories' : (categoryId! | categoryName)}})</small></h2>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <button type="button" routerLink="/tasks/add" class="btn btn-sm btn-outline-secondary">
+      <!--<span data-feather="calendar"></span>-->
+      Add task
+    </button>
+  </div>
+</div>
+<div class="table-responsive table-hover">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Due date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks" routerLink="/tasks/{{task.id}}" class="table-row">
+        <td>
+          {{task.id}}
+        </td>
+        <td>
+          {{task.title}}
+        </td>
+        <td>
+          {{task.categoryId! | categoryName}}
+        </td>
+        <td>
+          {{task.deadline| date:'short'}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

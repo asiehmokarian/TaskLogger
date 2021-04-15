@@ -1,27 +1,43 @@
 <div *ngIf="task">
-  <h2>{{task.title | uppercase}} Details</h2>
-  <div>
-    <label for="title">Title: </label>
-    <input id="title" name="title" [(ngModel)]="task.title" placeholder="Title">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h2 class="h2">{{id === 'add' ? 'Add new task' : task.title + ' detail'}}</h2>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group mr-2">
+        <button type="button" (click)="save()" class="btn btn-sm btn-outline-secondary">
+          Save
+        </button>
+      </div>
+      <div class="btn-group mr-2">
+        <button type="button" (click)="goBack()" class="btn btn-sm btn-outline-secondary">
+          Back
+        </button>
+      </div>
+    </div>
   </div>
-  <div>
-    <label for="description">Description: </label>
-    <input id="description" name="description" [(ngModel)]="task.description" placeholder="Description">
-  </div>
-  <div>
-    <label for="categoryId">Category: </label>
-    <select id="categoryId" name="categoryId" [(ngModel)]="task.categoryId">
-      <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
-    </select>
-  </div>
-  <div>
-    <label for="deadline">Deadline: </label>
-    <input id="deadline" type="datetime-local" name="deadline" [ngModel]="task.deadline| date:'yyyy-MM-ddTHH:mm'" (ngModelChange)="task.deadline = $event">
-  </div>
-  <div>
-    <label for="reminder">Reminder: </label>
-    <input id="reminder" type="datetime-local" name="reminder" [ngModel]="task.reminder | date:'yyyy-MM-ddTHH:mm'" (ngModelChange)="task.reminder = $event">
-  </div>
+
+  <form>
+    <div class="form-group">
+      <label for="title">Title: </label>
+      <input id="title" name="title" class="form-control" [(ngModel)]="task.title" placeholder="Title">
+    </div>
+    <div class="form-group">
+      <label for="description">Description: </label>
+      <input id="description" name="description" class="form-control" [(ngModel)]="task.description" placeholder="Description">
+    </div>
+    <div class="form-group">
+      <label for="categoryId">Category: </label>
+      <select id="categoryId" name="categoryId" class="form-control" [(ngModel)]="task.categoryId">
+        <option *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="deadline">Deadline: </label>
+      <input id="deadline" type="datetime-local" name="deadline" class="form-control" [ngModel]="task.deadline| date:'yyyy-MM-ddTHH:mm'" (ngModelChange)="task.deadline = $event">
+    </div>
+    <div class="form-group">
+      <label for="reminder">Reminder: </label>
+      <input id="reminder" type="datetime-local" name="reminder" class="form-control" [ngModel]="task.reminder | date:'yyyy-MM-ddTHH:mm'" (ngModelChange)="task.reminder = $event">
+    </div>
+  </form>
 </div>
-<button (click)="save()">Save</button>
-<button (click)="goBack()">go back</button>
+

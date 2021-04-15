@@ -10,10 +10,15 @@ import { TaskDashboardModule } from './task-dashboard/task-dashboard.module';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HeaderComponent } from './header/header.component';
+import { SidebarMenuComponent } from './sidebar-menu/sidebar-menu.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    SidebarMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +31,8 @@ import { InMemoryDataService } from './in-memory-data.service';
     ),
 
     TaskDashboardModule,
-    CommonComponentsModule
+    CommonComponentsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

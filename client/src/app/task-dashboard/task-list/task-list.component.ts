@@ -12,7 +12,6 @@ import { TasksService } from '../../services/tasks.service';
 export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
   categoryId?: number | null = null;
-  upcomingTasks: Task[] = [];
 
   constructor(private tasksService: TasksService, private route: ActivatedRoute) {
   }
@@ -30,7 +29,5 @@ export class TaskListComponent implements OnInit {
     else {
       this.tasksService.getTasks().subscribe(tasks => { this.tasks = tasks });
     }
-
-    this.tasksService.getUpComingTasks().subscribe(tasks => this.upcomingTasks = tasks);
   }
 }
