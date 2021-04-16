@@ -1,43 +1,61 @@
 <div *ngIf="task">
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h2 class="h2">{{id === 'add' ? 'Add new task' : task.title + ' detail'}}</h2>
-    <div class="btn-toolbar mb-2 mb-md-0">
-      <div class="btn-group mr-2">
-        <button type="button" (click)="save()" class="btn btn-sm btn-outline-secondary">
-          Save
-        </button>
-      </div>
-      <div class="btn-group mr-2">
-        <button type="button" (click)="goBack()" class="btn btn-sm btn-outline-secondary">
-          Back
-        </button>
+  <form #taskForm="ngForm" (ngSubmit)="save()">
+
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h2 class="h2">{{id === 'add' ? 'Add new task' : task.title + ' detail'}}</h2>
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+          <button type="submit" class="btn btn-sm btn-outline-secondary" [disabled]="taskForm.form.invalid">
+            Save
+          </button>
+        </div>
+        <div class="btn-group mr-2">
+          <button type="button" (click)="goBack()" class="btn btn-sm btn-outline-secondary">
+            Back
+          </button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <form>
     <div class="form-group">
       <label for="title">Title: </label>
-      <input id="title" name="title" class="form-control" [(ngModel)]="task.title" placeholder="Title">
+      <input id="title" name="title" #title="ngModel" [(ngModel)]="task.title" class="form-control" [class.is-valid]="title.valid && title.dirty" [class.is-invalid]="title.invalid && title.dirty" required minlength="3" maxlength="15" placeholder="Title">
+      <div [hidden]="title.valid || title.pristine" class="invalid-feedback">
+        <div *ngIf="title.errors?.required">Name is required.</div>
+        <div *ngIf="title.errors?.minlength || title.errors?.maxlength">Name length must be between 3 to 15 characters.</div>
+      </div>
     </div>
+
     <div class="form-group">
       <label for="description">Description: </label>
-      <input id="description" name="description" class="form-control" [(ngModel)]="task.description" placeholder="Description">
+      <input id="description" name="description" [(ngModel)]="task.description" class="form-control" placeholder="Description">
     </div>
+
     <div class="form-group">
       <label for="categoryId">Category: </label>
       <select id="categoryId" name="categoryId" class="form-control" [(ngModel)]="task.categoryId">
         <option *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}</option>
       </select>
     </div>
+
     <div class="form-group">
-      <label for="deadline">Deadline: </label>
-      <input id="deadline" type="datetime-local" name="deadline" class="form-control" [ngModel]="task.deadline| date:'yyyy-MM-ddTHH:mm'" (ngModelChange)="task.deadline = $event">
+      <label for="deadline">Due date: </label>
+      <input id="deadline" type="datetime-local"
+             name="deadline" #deadline="ngModel"
+             [ngModel]="task.deadline| date:'yyyy-MM-ddTHH:mm'" min="{{currentDate | date:'yyyy-MM-ddTHH:mm'}}" (ngModelChange)="task.deadline = $event"
+             class="form-control" required
+             [class.is-valid]="deadline.valid && deadline.dirty" [class.is-invalid]="deadline.invalid && deadline.dirty">
+      <div [hidden]="deadline.valid || deadline.pristine" class="invalid-feedback">
+        <div *ngIf="deadline.errors?.required">Due date is required.</div>
+      </div>
     </div>
+
     <div class="form-group">
       <label for="reminder">Reminder: </label>
-      <input id="reminder" type="datetime-local" name="reminder" class="form-control" [ngModel]="task.reminder | date:'yyyy-MM-ddTHH:mm'" (ngModelChange)="task.reminder = $event">
+      <input id="reminder" type="datetime-local" name="reminder"
+             class="form-control" min="{{currentDate | date:'yyyy-MM-ddTHH:mm'}}" max="{{task.deadline | date:'yyyy-MM-ddTHH:mm'}}"
+             [ngModel]="task.reminder | date:'yyyy-MM-ddTHH:mm'" (ngModelChange)="task.reminder = $event">
     </div>
+
   </form>
 </div>
-
