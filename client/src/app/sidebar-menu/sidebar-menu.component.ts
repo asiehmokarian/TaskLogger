@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar-menu.component.scss']
 })
 export class SidebarMenuComponent implements OnInit {
-  @Input() collapse = false;
+  @Input() collapse = true;
   activeId = "1";
 
   constructor() { }

@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TasksService } from '../../services/tasks.service';
+import { TasksServiceMock } from '../../services/tests/tasks.service.mock';
 
 import { CategoriesComponent } from './categories.component';
 
@@ -8,9 +10,12 @@ describe('CategoriesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CategoriesComponent ]
+      declarations: [CategoriesComponent],
+      providers: [
+        { provide: TasksService, useClass: TasksServiceMock }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
