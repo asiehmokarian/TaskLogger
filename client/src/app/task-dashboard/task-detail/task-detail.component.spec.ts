@@ -1,4 +1,8 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
+import { TasksService } from '../../services/tasks.service';
+import { TasksServiceMock } from '../../services/tests/tasks.service.mock';
 
 import { TaskDetailComponent } from './task-detail.component';
 
@@ -8,9 +12,23 @@ describe('TaskDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TaskDetailComponent ]
+      declarations: [TaskDetailComponent],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: {
+              paramMap: { get(id: string) { return 2; } }
+            }
+          }
+        },
+        { provide: TasksService, useClass: TasksServiceMock },
+        { provide: Location }
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
     })
-    .compileComponents();
+      .compileComponents();
+
   });
 
   beforeEach(() => {

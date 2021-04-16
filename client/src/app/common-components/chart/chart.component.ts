@@ -8,8 +8,6 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ChartComponent implements OnInit {
   @Input() source: any[] = [];
 
-  view = [700, 400];
-
   // options pie
   gradient = false;
   showLegend = true;
@@ -36,10 +34,5 @@ export class ChartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.source);
-  }
-
-  onSelect(event: any): void {
-    console.log(event);
   }
 }
