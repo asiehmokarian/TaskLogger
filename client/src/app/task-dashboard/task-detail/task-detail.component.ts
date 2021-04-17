@@ -15,6 +15,7 @@ export class TaskDetailComponent implements OnInit {
   task?: Task;
   id: string | null = null;
   categories: Category[] = [];
+  currentDate = new Date();
 
   constructor(
     private route: ActivatedRoute,
@@ -43,7 +44,7 @@ export class TaskDetailComponent implements OnInit {
         .subscribe(task => this.task = task);
     }
     else
-      this.task = {};
+      this.task = { deadline: this.currentDate, categoryId: this.categories[0].id };
   }
 
   save(): void {
