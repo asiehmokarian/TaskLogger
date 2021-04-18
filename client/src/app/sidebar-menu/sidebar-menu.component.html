@@ -2,18 +2,12 @@
   <div class="sidebar-sticky pt-3">
     <ul ngbNav [(activeId)]="activeId" class="nav flex-column">
       <li ngbNavItem="1" class="nav-item">
-        <a ngbNavLink class="nav-link" routerLink="/" (click)="collapsedChange.emit(collapsed=!collapsed)">
-          <span data-feather="Dashboard"></span>
-          Dashboard
-        </a>
-      </li>
-      <li ngbNavItem="2" class="nav-item">
         <a ngbNavLink class="nav-link" routerLink="/tasks" (click)="collapsedChange.emit(collapsed=!collapsed)">
           <span data-feather="Tasks"></span>
           Tasks
         </a>
       </li>
-      <li ngbNavItem="3" class="nav-item">
+      <li ngbNavItem="2" class="nav-item">
         <a ngbNavLink class="nav-link" routerLink="/categories" (click)="collapsedChange.emit(collapsed=!collapsed)">
           <span data-feather="Categories"></span>
           Categories

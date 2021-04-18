@@ -14,6 +14,7 @@ export class ChartComponent implements OnInit {
   legendTitle = "Categories:";
   showLabels = false;
   isDoughnut = false;
+  animations = false;
   legendPosition = 'right';
 
   // options bar

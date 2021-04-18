@@ -1,13 +1,11 @@
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
   <h2 class="h2">Categories</h2>
   <div class="btn-toolbar mb-2 mb-md-0">
     <button type="button" class="btn btn-sm btn-outline-secondary">
-      <!--<span data-feather="calendar"></span>-->
       Add category
     </button>
   </div>
 </div>
-
 <div class="card-deck">
   <div *ngFor="let category of categories" routerLink="/categories/{{category.id}}" class="card text-center bg-light">
     <div class="card-body">
@@ -15,3 +13,4 @@
     </div>
   </div>
 </div>
+<app-task-upcoming></app-task-upcoming>
