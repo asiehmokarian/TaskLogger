@@ -1,14 +1,12 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { Task } from '../models/task.model';
 
 import { TasksService } from './tasks.service';
 
 describe('TasksService', () => {
   let httpClientSpy: jasmine.SpyObj<HttpClient>;
   let service: TasksService;
-  let expectedTasks: Task[];
 
   beforeEach(() => {
     const spy = jasmine.createSpyObj('HttpClient', ['get']);
@@ -22,7 +20,6 @@ describe('TasksService', () => {
     service = TestBed.inject(TasksService);
     httpClientSpy = TestBed.inject(HttpClient) as jasmine.SpyObj<HttpClient>;
   });
-
 
   it('should be created', () => {
     expect(service).toBeTruthy();
@@ -51,11 +48,12 @@ describe('TasksService', () => {
   it('should handle the error when the server returns a 404', () => {
     const errorResponse = new HttpErrorResponse({
       error: 'test 404 error',
-      status: 404, statusText: 'Not Found'
+      status: 404,
+      statusText: 'Not Found'
     });
     httpClientSpy.get.and.returnValue(of(errorResponse));
 
-    service.getTasks().subscribe(error => { expect((error[0] as HttpErrorResponse).message).toContain('test 404 error') },
+    service.getTasks().subscribe(error => { expect((error[0] as HttpErrorResponse).error).toContain('test 404 error') },
       () => fail('expected error to be handled')
     );
   })
