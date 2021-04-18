@@ -87,11 +87,11 @@ export class TasksService {
       );
   }
 
-  addNotification(message: string): void {
+  private addNotification(message: string): void {
     this.notificationService.add(`Task service: ${message}`);
   }
 
-  handleError<T>(operation: string, result?: T): (err: HttpErrorResponse) => Observable<T> {
+  private handleError<T>(operation: string, result?: T): (err: HttpErrorResponse) => Observable<T> {
     return (err): Observable<T> => {
       console.error(err);
       this.addNotification(`${operation} failed:${err.message}`);
