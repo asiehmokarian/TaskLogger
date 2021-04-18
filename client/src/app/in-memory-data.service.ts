@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
+
 import { Category } from './models/category.model';
 import { Task } from './models/task.model';
 
@@ -38,7 +39,7 @@ export class InMemoryDataService implements InMemoryDbService {
     return { tasks, upcomingTasks, categories };
   }
 
-  addDays(date: Date, days: number) {
+  private addDays(date: Date, days: number) {
     const result = new Date(date);
     result.setDate(result.getDate() + days);
     return result;

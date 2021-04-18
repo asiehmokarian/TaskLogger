@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { CategoriesComponent } from './task-dashboard/categories/categories.component';
 import { TaskDetailComponent } from './task-dashboard/task-detail/task-detail.component';
 import { TaskListComponent } from './task-dashboard/task-list/task-list.component';
