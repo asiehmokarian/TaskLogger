@@ -42,11 +42,11 @@ describe('HeaderComponent', () => {
     expect(component.sidebarMenuCollapsed).toBe(true, 'collapsed after second click');
   })
 
-  it('header button should raise the #navbarTogglerEvent event when clicked', () => {
+  it('header button should raise the #sidebarMenuCollapsedChange event when clicked', () => {
     const hostElement = fixture.nativeElement;
     const button: HTMLButtonElement = hostElement.querySelector('button');
     const expectedCollapsed = !component.sidebarMenuCollapsed;
-    component.navbarTogglerEvent.subscribe(collapsed => expect(collapsed).toBe(expectedCollapsed));
+    component.sidebarMenuCollapsedChange.subscribe(collapsed => expect(collapsed).toBe(expectedCollapsed));
     button.click();
   })
 });
