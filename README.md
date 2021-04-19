@@ -19,7 +19,7 @@ Application execution requires Node.js and Powershell to be installed on your ma
 
 The `run.ps1` script will install the required packages, build and serves the app on default port `4200`. If this port is already in use on your machine, just press `y` when you are asked to use a different port.
 
-![Task logger](./run.png)
+![Task logger](./AppRun.png)
 
 ## Architecture diagram
 The image below shows the application building blocks and its architecture for the first development iteration. 
