@@ -2,10 +2,8 @@
 
 .card:hover {
   cursor: pointer;
-/*  color: var(--light);
-*/ 
 }
-.card .card-body:hover {
-/*  background-color: var(--secondary);
-*/}
 
+.card-deck {
+  margin-bottom: 16px;
+}

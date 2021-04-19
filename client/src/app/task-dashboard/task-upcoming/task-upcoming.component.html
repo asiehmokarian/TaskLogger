@@ -1,0 +1,11 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+  <h2 class="h2">Category tasks <small class="text-muted">(Due date in 7 days)</small></h2>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+      Next 7 days
+    </button>
+  </div>
+</div>
+<div *ngIf="upcomingTasks.length" class="card w-100">
+  <app-chart [source]="data" class="chart"></app-chart>
+</div>

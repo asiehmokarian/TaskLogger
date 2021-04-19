@@ -1,7 +1,8 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
+import { environment } from '../../environments/environment.prod';
 
 import { Category } from '../models/category.model';
 import { Task } from '../models/task.model';
@@ -11,7 +12,7 @@ import { NotificationService } from './notification.service';
   providedIn: 'root'
 })
 export class TasksService {
-  private serviceUrl = '/api';
+  private serviceUrl = environment.serviceUrl ?? '/api';
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
@@ -86,14 +87,14 @@ export class TasksService {
       );
   }
 
-  addNotification(message: string): void {
+  private addNotification(message: string): void {
     this.notificationService.add(`Task service: ${message}`);
   }
 
-  handleError<T>(operation: string, result?: T): (err: any) => Observable<T> {
+  private handleError<T>(operation: string, result?: T): (err: HttpErrorResponse) => Observable<T> {
     return (err): Observable<T> => {
       console.error(err);
-      this.addNotification(`${operation} failed:${err.body.error}`);
+      this.addNotification(`${operation} failed:${err.message}`);
       return of(result as T);
     }
   }

@@ -1,5 +1,6 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { TasksService } from '../../services/tasks.service';
 import { TasksServiceMock } from '../../services/tests/tasks.service.mock';
@@ -13,6 +14,7 @@ describe('TaskDetailComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [TaskDetailComponent],
+      imports: [FormsModule],
       providers: [
         {
           provide: ActivatedRoute,

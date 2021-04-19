@@ -7,8 +7,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   @Input() title = "Task logger";
-  @Output() navbarTogglerEvent = new EventEmitter<boolean>();
-  sidebarMenuCollapsed = true;
+  @Output() sidebarMenuCollapsedChange = new EventEmitter<boolean>();
+  @Input()  sidebarMenuCollapsed = true;
 
   constructor() { }
 
