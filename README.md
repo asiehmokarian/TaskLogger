@@ -30,7 +30,9 @@ At this stage, the scope is very limited, and everything is easy and understanda
 ![Architecture diagram](./ArchitectureDiagram.png)
 
 ## Testing
-Tests reports can be found [here](./client/coverage/client/index.html). Tests are limited due to time constraint, there is a lot of room for improvement to include e2e tests and increase unit tests coverage. 
+The image below shows the code coverage report. Tests are limited due to time constraint, there is a lot of room for improvement to include e2e tests and increase unit tests coverage.
+
+![codecoverage](./CodeCoverageReport.png)
 
 ## Rooms for improvement    
 There are a lot of rooms for improvements, including the architecture, design, implementation and code quality, however a there are some considerations before trying to apply any improvements:
