@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Notification } from '../../models/notification.model';
 
 import { NotificationService } from '../../services/notification.service';
 
@@ -8,19 +9,21 @@ import { NotificationService } from '../../services/notification.service';
   styleUrls: ['./notifications.component.scss']
 })
 export class NotificationsComponent implements OnInit {
-  notifications: string[] = this.notificationService.notifications;
+  notifications: Notification[] = [];
 
-  constructor(public notificationService: NotificationService) { }
+  constructor(public notificationService: NotificationService) {
+    this.notificationService.expiredNotification$.subscribe(notification => this.notifications.push(notification));
+  }
 
   ngOnInit(): void {
   }
 
-  onRemove(notification: string) {
-    this.notificationService.remove(notification);
+  dismiss(notificationId: number) {
+    const index = this.notifications.findIndex((n) => n.id === notificationId);
+    this.notifications.splice(index, 1);
   }
 
-  removeAll() {
+  dismissAll() {
     this.notifications = [];
-    this.notificationService.clear();
   }
 }
