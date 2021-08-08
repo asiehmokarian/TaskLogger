@@ -1,5 +1,8 @@
 <h2>Notifications</h2>
 <div *ngIf="notifications.length">
-  <div *ngFor="let notification of notifications">{{notification.taskTitle}} is due by {{notification.taskDeadline}}</div>
+  <div *ngFor="let notification of notifications">
+    <p>{{notification.taskTitle}} is due by {{notification.taskDeadline}}</p>
+    <button class="clear" (click)="dismiss(notification.id!)">X</button>
+  </div>
 </div>
-<button class="clear" click="dismissAll()">Dismiss All</button>
+<button class="clear" (click)="dismissAll()">Dismiss All</button>

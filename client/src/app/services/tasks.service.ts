@@ -54,6 +54,7 @@ export class TasksService {
     return this.http.put(url, task, this.httpOptions)
       .pipe(
         tap(() => this.addLog(`Updated task id = ${task.id}.`)),
+        tap(() => { this.notificationService.add({ taskTitle: task.title!, taskReminder: task.reminder!, taskId: task.id!, taskDeadline: task.deadline! }) }),
         catchError(this.handleError<any>(`updateTask id = ${task.id}`))
       );
   }
@@ -89,8 +90,7 @@ export class TasksService {
       );
   }
 
-  private addNotifications(message: string): void {
-    //  this.notificationService.add(`Task service: ${message}`);
+  private addNotifications(task: Task): void {
   }
 
   private addLog(message: string): void {

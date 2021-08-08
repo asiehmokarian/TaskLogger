@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Notification } from '../models/notification.model';
 
 @Injectable({
@@ -15,27 +15,28 @@ export class NotificationService {
   constructor() { }
 
   add(notification: Notification) {
-    const interval = new Date(notification.taskReminder).getTime() - Date.now();
-    const notificaionId = window.setTimeout(() => {
-      this.expiredNotifications.next(notification);
+    this.removeIfExist(notification.taskId);
+    if (notification.taskReminder) {
+      const interval = new Date(notification.taskReminder).getTime() - Date.now();
+      const notificaionId = window.setTimeout(() => {
+        this.expiredNotifications.next(notification);
 
-      const notificationIndex = this.activeNotifications.findIndex(n => n.id === notificaionId);
-      this.activeNotifications.splice(notificationIndex, 1);
-    }, interval);
+        const index = this.activeNotifications.findIndex(n => n.id === notificaionId);
+        if (index > -1) {
+          this.activeNotifications.splice(index, 1);
+        }
+      }, interval);
 
-    notification.id = notificaionId;
-    this.activeNotifications.push(notification);
+      notification.id = notificaionId;
+      this.activeNotifications.push(notification);
+    }
   }
 
-  //get(): Subject<Reminder[]> {
-  //  return this.notifications;
-  //}
-
-  clear() {
-    //this.notifications.complete();
-  }
-
-  remove(message: string) {
-
+  private removeIfExist(taskId: number): void {
+    const index = this.activeNotifications.findIndex(n => n.taskId === taskId);
+    if (index > -1) {
+      clearTimeout(this.activeNotifications[index].id);
+      this.activeNotifications.splice(index, 1);
+    }
   }
 }
