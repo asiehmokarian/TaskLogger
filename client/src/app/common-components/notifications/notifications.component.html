@@ -1,8 +1,8 @@
-<div *ngIf="notificationService.notifications.length">
-  <h2>Notifications</h2>
-  <div *ngFor="let notification of notificationService.notifications">
-    {{notification}}
-    <button (click)="notificationService.remove(notification)" class="clear">Remove</button>
+<h2>Notifications</h2>
+<div *ngIf="notifications.length">
+  <div *ngFor="let notification of notifications">
+    <p>{{notification.taskTitle}} is due by {{notification.taskDeadline}}</p>
+    <button class="clear" (click)="dismiss(notification.id!)">X</button>
   </div>
-  <button (click)="notificationService.clear()" class="clear">Clear All</button>
 </div>
+<button class="clear" (click)="dismissAll()">Dismiss All</button>
