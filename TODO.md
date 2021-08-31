@@ -13,3 +13,9 @@
 - Feed DB with more attractive data
 - Decide to keep or remove the common component module from import list of app module
 - Updating diagram based on the architecture changes
+
+
+- findout the best practice to define services, isn't it better to define a task service interface and then implement this interface and instead of injecting the task service everywhere we inject the the task service inerface?
+if there is no reason doing this, to prvide differnt implemetations of task service or log service, shall we just implement the new service just by extending the exsiting one. 
+
+- reimpelement the notification service using rxjs operations
